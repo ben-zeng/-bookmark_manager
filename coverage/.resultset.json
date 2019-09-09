@@ -1,0 +1,23 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/Ben/Dropbox/Dev/Makers/Week4/bookmark_manager/spec/test_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/Ben/Dropbox/Dev/Makers/Week4/bookmark_manager/lib/test.rb": [
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1568036426
+  }
+}
