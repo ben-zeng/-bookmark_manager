@@ -12,4 +12,9 @@ describe Bookmarks do
     expect(bookmarks).to include('http://www.destroyallsoftware.com')
     expect(bookmarks).to include('http://www.google.com')
   end
+
+  it 'create' do
+    Bookmarks.create(url: 'www.testpage.com')
+    expect(Bookmarks.all).to include('www.testpage.com')
+  end
 end
