@@ -1,11 +1,12 @@
 <h1>Hello there you are in the bookmarks page</h1>
 
 <form action="/bookmarks" method="post">
-  <input type="text" name="url" />
+  <input type="text" placeholder="enter Title" name="title" />
+  <input type="text" placeholder="enter URL" name="url" />
   <input type="submit" value="Submit" />
 </form>
 
 <ul><%@bookmarks.each do |bookmarks|%>
-    <li><%=bookmarks%></li>
+    <li><a href="<%=bookmarks[1]%>"><%=bookmarks[0]%></a></li>
     <%end%>
 </ul>
