@@ -1,2 +1,5 @@
 <h1>Hello there you are in the bookmarks page</h1>
-<h2><%=@bookmarks%></h2>
+<ul><%@bookmarks.each do |bookmarks|%>
+    <li><%=bookmarks%></li>
+    <%end%>
+</ul>
