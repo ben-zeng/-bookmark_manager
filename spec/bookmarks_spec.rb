@@ -8,13 +8,18 @@ describe Bookmarks do
     conn.exec("INSERT INTO bookmarks (url,title) VALUES('http://www.destroyallsoftware.com','Destroy All Software');")
     conn.exec("INSERT INTO bookmarks (url,title) VALUES('http://www.google.com','Google');")
     bookmarks = Bookmarks.all
-    expect(bookmarks).to include(["Makers Academy", "http://www.makersacademy.com"])
-    expect(bookmarks).to include(["Destroy All Software", "http://www.destroyallsoftware.com"])
-    expect(bookmarks).to include(["Google", "http://www.google.com"])
+    expect(bookmarks.length).to eq 3
+    expect(bookmarks.first).to be_a Bookmarks
+    expect(bookmarks.first.title).to eq 'Makers Academy'
+    expect(bookmarks.first.url).to eq 'http://www.makersacademy.com'
+    #expect(bookmarks.first.id).to eq bookmarks.id
+
   end
 
   it 'create' do
     Bookmarks.create(title: 'Test Page', url: 'www.testpage.com')
-    expect(Bookmarks.all).to include(['Test Page', "www.testpage.com"])
+    bookmarks = Bookmarks.all
+    expect(bookmarks.first.title).to include('Test Page')
+    expect(bookmarks.first.url).to include("www.testpage.com")
   end
 end

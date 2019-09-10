@@ -7,6 +7,6 @@
 </form>
 
 <ul><%@bookmarks.each do |bookmarks|%>
-    <li><a href="<%=bookmarks[1]%>"><%=bookmarks[0]%></a></li>
+    <li><a href="<%=bookmarks.url%>"><%=bookmarks.title%></a></li>
     <%end%>
 </ul>
