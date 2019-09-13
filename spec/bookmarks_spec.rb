@@ -22,4 +22,14 @@ describe Bookmarks do
     expect(bookmark.url).to include("www.testpage.com")
   end
 
+  it 'delete' do
+    #result = conn.exec("INSERT INTO bookmarks (url,title) VALUES ('http://www.makersacademy.com','Makers Academy') RETURNING id, url, title;")
+    #bookmark = Bookmarks.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
+    bookmark = Bookmarks.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+    Bookmarks.create(title: 'Makers 2', url: 'http://www.2.com')
+    Bookmarks.delete(id: bookmark.id)
+    bookmarks = Bookmarks.all
+    expect(bookmarks.last.title).to_not include('Makers Academy')
+  end
+
 end
