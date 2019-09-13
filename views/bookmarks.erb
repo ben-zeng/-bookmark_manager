@@ -17,6 +17,10 @@
       <form action="/bookmarks/<%=bookmarks.id%>/edit" method="get">
         <input type="submit" value="Edit"/>
       </form>
+      <form action="/bookmarks/<%=bookmarks.id%>/comments" method="get">
+        <input type="hidden" name="title" value="<%=bookmarks.title%>"/>
+        <input type="submit" value="Comments"/>
+      </form>
         <a href="<%=bookmarks.url%>"><%=bookmarks.title%> </a>
       </table>
 

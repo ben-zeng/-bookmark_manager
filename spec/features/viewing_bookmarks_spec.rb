@@ -33,4 +33,13 @@ feature 'viewing bookmarks' do
     click_button 'Submit'
     expect(page).to have_content('Invalid url!!!!')
   end
+
+  scenario 'clicking first comments button will take you to comment page for bookmark clicked' do
+    create_test_rows
+    visit '/bookmarks'
+    first('.bookmark').click_button'Comments'
+    expect(page).to have_content('Makers Academy')
+  end
+
+
 end
