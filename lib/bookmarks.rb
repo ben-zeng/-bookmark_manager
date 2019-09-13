@@ -1,4 +1,4 @@
-require 'pg'
+
 class Bookmarks
   attr_reader :id, :title, :url
 

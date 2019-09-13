@@ -1,4 +1,4 @@
-require 'pg'
+
 
 def setup_test_database
   p "Exterminating content in all databases... / wiping hard drive..."
