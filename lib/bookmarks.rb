@@ -3,43 +3,23 @@ class Bookmarks
   attr_reader :id, :title, :url
 
   def self.all
-      if ENV['ENVIRONMENT'] == 'test'
-          conn = PG.connect(dbname: 'bookmark_manager_test')
-      else
-          conn = PG.connect(dbname: 'bookmark_manager')
-      end
-      result = conn.exec('select * from bookmarks')
+      result = DatabaseConnection.query('select * from bookmarks')
       result.map do |bookmark|
         Bookmarks.new(id: bookmark['id'], title: bookmark['title'], url: bookmark['url'])
       end
   end
 
   def self.create(title: , url:)
-    if ENV['ENVIRONMENT'] == 'test'
-        conn = PG.connect(dbname: 'bookmark_manager_test')
-    else
-        conn = PG.connect(dbname: 'bookmark_manager')
-    end
-    result = conn.exec("INSERT INTO bookmarks (url,title) VALUES ('#{url}','#{title}') RETURNING id, url, title;")
+    result = DatabaseConnection.query("INSERT INTO bookmarks (url,title) VALUES ('#{url}','#{title}') RETURNING id, url, title;")
     Bookmarks.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
   def self.delete(id:)
-    if ENV['ENVIRONMENT'] == 'test'
-      conn = PG.connect(dbname: 'bookmark_manager_test')
-    else
-      conn = PG.connect(dbname: 'bookmark_manager')
-    end
-    conn.exec("DELETE from bookmarks where id = #{id}")
+    DatabaseConnection.query("DELETE from bookmarks where id = #{id}")
   end
 
   def self.edit(id:, title:)
-    if ENV['ENVIRONMENT'] == 'test'
-      conn = PG.connect(dbname: 'bookmark_manager_test')
-    else
-      conn = PG.connect(dbname: 'bookmark_manager')
-    end
-    result = conn.exec("UPDATE bookmarks SET title = '#{title}' where id = '#{id}' RETURNING id, url, title;")
+    result = DatabaseConnection.query("UPDATE bookmarks SET title = '#{title}' where id = '#{id}' RETURNING id, url, title;")
     Bookmarks.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
