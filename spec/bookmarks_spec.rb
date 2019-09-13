@@ -17,9 +17,9 @@ describe Bookmarks do
   end
 
   it 'create' do
-    bookmark = Bookmarks.create(title: 'Test Page', url: 'www.testpage.com')
+    bookmark = Bookmarks.create(title: 'Test Page', url: 'http://www.testpage.com')
     expect(bookmark.title).to include('Test Page')
-    expect(bookmark.url).to include("www.testpage.com")
+    expect(bookmark.url).to include("http://www.testpage.com")
   end
 
   it 'delete' do

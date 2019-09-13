@@ -17,4 +17,5 @@ describe DatabaseConnection do
       DatabaseConnection.query("select * from bookmarks")
     end
   end
+
 end
